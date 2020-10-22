@@ -1,0 +1,19 @@
+
+
+
+<app-search-box [dataToFilter]="productsObservable" (onFilteredData)="onFilteredData($event)"></app-search-box>
+<div *ngIf="displayProducts && displayProducts.length == 0">
+  <p> Pas de produit correspondants à votre recherche. </p>
+</div>
+<div class="row">
+  <div class="col-sm-2" *ngFor="let product of displayProducts">
+    <div class="card" style="width: 300px">
+      <img class="card-img-top" [src]="product.imgUrl" [alt]="product.title"/>
+      <div class="card-body">
+        <h5 class="card-title">{{product.title}}</h5>
+        <p class="card-text">{{product.description}}</p>
+        <p class="card-text"> Prix: {{product.price}}€</p>
+      </div>
+    </div>
+  </div>
+</div>

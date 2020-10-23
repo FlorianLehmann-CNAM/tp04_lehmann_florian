@@ -1,0 +1,27 @@
+<div class="shopping-cart-title">
+    <h1> Panier (Prix total: {{ getShoppingCartTotalPrice() | async }}€)</h1>
+    <button *ngIf="(products$ | async)?.length > 0" (click)="clearShoppingCart()" class="btn-primary">Vider le panier</button>
+</div>
+<div *ngIf="(products$ | async)?.length == 0">
+	<p> Vous n'avez aucun élément dans votre panier </p>
+</div>
+
+<div class="card mb-2" style="max-width: 540px;" *ngFor="let product of products$ | async">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img [src]="product.imgUrl" class="card-img" [alt]="product.title">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{product.title}}</h5>
+          <p class="card-text">{{product.description}}</p>
+          <p class="card-text">Quantitée : {{ product.quantity }}</p>
+          <p class="card-text">Prix : {{getTotalPriceFromProduct(product)}}€ ({{product.price}}€ par article)</p>
+        </div>
+        <div class="card-footer-custom">
+            <button class="btn-primary" (click)="deleteProduct(product, false)">Supprimer du panier</button>
+            <button class="btn-secondary" (click)="deleteProduct(product, true)">Tout supprimer</button>
+        </div>
+      </div>
+    </div>
+  </div>

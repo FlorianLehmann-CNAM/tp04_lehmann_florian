@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { ShoppingCartState } from 'src/app/models/states/ShoppingCart.state';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +9,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent{
+
+
+    nbProduct$ : Observable<number>;
+
+    constructor(private store: Store){}
+
+    ngOnInit(){
+        this.nbProduct$ = this.store.select(ShoppingCartState.GetProductsNumber);
+    }
 
 }

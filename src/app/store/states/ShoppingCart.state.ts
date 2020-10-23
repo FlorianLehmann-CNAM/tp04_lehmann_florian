@@ -1,7 +1,7 @@
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { AddProduct, ClearShoppingCart, DelProduct } from '../actions/ShoppingCart.action';
-import { Product } from '../Product';
-import { Article, ShoppingCart } from '../ShoppingCart';
+import { Product } from '../../models/Product';
+import { Article, ShoppingCart } from '../../models/ShoppingCart';
 
 
 @State<ShoppingCart>({
@@ -25,6 +25,7 @@ export class ShoppingCartState{
         })
         return number;
     }
+    
 
     @Action(AddProduct)
     add({getState, patchState} : StateContext<ShoppingCart>, {payload} : AddProduct){

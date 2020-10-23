@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { User } from '../../models/User';
+import { User } from '../../../models/User';
 
 @Component({
   selector: 'app-compte-form',
@@ -55,8 +55,9 @@ export class CompteFormComponent implements OnInit {
 
   onSubmit() : void{
     
+  
     let user : User = new User(this.name.value, this.surname.value, this.address.value, this.postalCode.value, this.city.value, this.mobilePhone.value, this.mail.value, this.country.value, this.gender.value, this.login.value, this.password.value);
-
+    console.log("submit", user);
     this.onFormSubmit.emit(user);
   }
 

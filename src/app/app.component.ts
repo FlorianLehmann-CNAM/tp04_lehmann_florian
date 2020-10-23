@@ -8,10 +8,5 @@ import { User } from './models/User';
 })
 export class AppComponent  {
   name = 'Angular ' + VERSION.major;
-  user : User;
 
-  onUserChanged(user: User) : void{
-    console.log("new user :) ", user);
-    this.user = user;
-  }
 }

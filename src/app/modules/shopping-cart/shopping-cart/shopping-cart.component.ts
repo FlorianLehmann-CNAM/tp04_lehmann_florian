@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Observable, of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import { ClearShoppingCart, DelProduct } from 'src/app/models/actions/ShoppingCart.action';
+import { ClearShoppingCart, DelProduct } from 'src/app/store/actions/ShoppingCart.action';
 import { Product } from 'src/app/models/Product';
 import { Article } from 'src/app/models/ShoppingCart';
-import { ShoppingCartState } from 'src/app/models/states/ShoppingCart.state';
+import { ShoppingCartState } from 'src/app/store/states/ShoppingCart.state';
 
 @Component({
   selector: 'app-shopping-cart',

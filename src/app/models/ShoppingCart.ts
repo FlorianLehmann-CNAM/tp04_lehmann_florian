@@ -9,11 +9,11 @@ export class Article extends Product{
 
 
     public static fromProduct(product : Product) : Article{
-        return new Article(product.title, product.description, product.price, product.imgUrl, 1);
+        return new Article(product.title, product.description, product.price, product.imgUrl, product.color, product.width, product.height, product.garantie, 1);
     }
 
-    constructor(title: string, description: string, price: number, imgUrl: string, quantity: number){
-        super(title, description, price, imgUrl);
+    constructor(title: string, description: string, price: number, imgUrl: string, color: string, width: number, height: number, garantie: number, quantity: number){
+        super(title, description, price, imgUrl, color, width, height, garantie);
         this.quantity = quantity;
     }
 

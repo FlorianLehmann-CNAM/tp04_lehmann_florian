@@ -1,5 +1,5 @@
-import { Product } from '../Product';
-import { Article } from '../ShoppingCart';
+import { Product } from '../../models/Product';
+import { Article } from '../../models/ShoppingCart';
 
 export class AddProduct{
     static readonly type = '[ShoppingCart] Add';

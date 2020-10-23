@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { ShoppingCartState } from 'src/app/models/states/ShoppingCart.state';
+import { ShoppingCartState } from 'src/app/store/states/ShoppingCart.state';
 
 @Component({
   selector: 'app-header',

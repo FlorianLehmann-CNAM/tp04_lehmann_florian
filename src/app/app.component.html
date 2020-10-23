@@ -1,9 +1,16 @@
 <app-header></app-header>
-
-<app-compte-form (onUserChanged)="onUserChanged($event)"></app-compte-form>
-<app-recap [user]="user"></app-recap>
-
-<app-product-list></app-product-list>
-<app-shopping-cart></app-shopping-cart>
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/home">Accueil</a>
+        <a class="nav-item nav-link" routerLink="/catalogue">Catalogue</a>
+        <a class="nav-item nav-link" routerLink="/shopping-cart">Panier</a>
+        <a class="nav-item nav-link" routerLink="/client">Compte</a>
+      </div>
+    </div>
+  </nav>
+<router-outlet></router-outlet>
 <app-footer></app-footer>

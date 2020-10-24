@@ -5,8 +5,8 @@
 </div>
 <div class="row">
 	<div class="col-sm-2" *ngFor="let product of displayProducts | async">
-		<div class="card" style="width: auto">
-			<img class="card-img-top" style="width: 150px; height: 150px" [src]="product.imgUrl" [alt]="product.title"/>
+		<div class="card"style="width: auto">
+			<img class="card-img-top" (click)="onCardClicked(product)"  style="width: 150px; height: 150px" [src]="product.imgUrl" [alt]="product.title"/>
 			<div class="card-body">
 				<h5 class="card-title">{{product.title}}</h5>
 				<p class="card-text">{{product.description}}</p>

@@ -15,12 +15,13 @@
         <div class="card-body">
           <h5 class="card-title">{{product.title}}</h5>
           <p class="card-text">{{product.description}}</p>
-          <p class="card-text">Quantitée : {{ product.quantity }}</p>
+          <p class="card-text">Quantitée :
+              <input type="number" class="form-control" min="1" [value]="product.quantity" (change)="onQuantityChanged(product, $event.target.value)">
+          </p>
           <p class="card-text">Prix : {{getTotalPriceFromProduct(product)}}€ ({{product.price}}€ par article)</p>
         </div>
         <div class="card-footer-custom">
-            <button class="btn-primary" (click)="deleteProduct(product, false)">Supprimer du panier</button>
-            <button class="btn-secondary" (click)="deleteProduct(product, true)">Tout supprimer</button>
+            <button class="btn-primary" (click)="deleteProduct(product)">Supprimer du panier</button>
         </div>
       </div>
     </div>

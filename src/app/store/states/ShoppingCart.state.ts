@@ -1,5 +1,5 @@
 import { Action, Selector, State, StateContext } from "@ngxs/store";
-import { AddProduct, ClearShoppingCart, DelProduct } from '../actions/ShoppingCart.action';
+import { AddProduct, ClearShoppingCart, DelProduct, ModifyQuantity } from '../actions/ShoppingCart.action';
 import { Product } from '../../models/Product';
 import { Article, ShoppingCart } from '../../models/ShoppingCart';
 
@@ -49,33 +49,14 @@ export class ShoppingCartState{
     }
 
     @Action(DelProduct)
-    delete({getState, patchState} : StateContext<ShoppingCart>, {payload, deleteAll} : DelProduct){
+    delete({getState, patchState} : StateContext<ShoppingCart>, {payload} : DelProduct){
         const state : ShoppingCart = getState();
         let foundProductIndex : number = state.products.findIndex((p) => p.title.toLowerCase() == payload.title.toLowerCase());
-        if(deleteAll){
-            patchState({
-                products: [...state.products.filter((p, i) => i != foundProductIndex)]
-            });
-            return;
-        }
-        if(foundProductIndex > -1){
-            let quantity : number = state.products[foundProductIndex].quantity;
-            if(quantity == 1)
-            {
-                patchState({
-                    products: [...state.products.filter((p, i) => i != foundProductIndex)]
-                });
-            }
-            else{
-                state.products[foundProductIndex].quantity--;
-                patchState({
-                    products: [...state.products]
-                })
-            }
-        }
-        else{
-            console.log("Error : product not found");
-        }
+       
+        patchState({
+            products: [...state.products.filter((p, i) => i != foundProductIndex)]
+        });
+        return;
     }
 
     @Action(ClearShoppingCart)
@@ -88,4 +69,18 @@ export class ShoppingCartState{
         });
     }
 
+    @Action(ModifyQuantity)
+    modifyQuantity({getState, patchState} : StateContext<ShoppingCart>, {payload, newQuantity} : ModifyQuantity){
+        const state: ShoppingCart = getState();
+
+        let index = state.products.findIndex((p) => p.id == payload.id)
+        console.log(index);
+        if(index > -1){
+            
+            state.products[index].quantity = newQuantity;
+            patchState({
+                products: [...state.products]
+            });
+        }
+    }
 }

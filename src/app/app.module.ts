@@ -11,18 +11,17 @@ import { MatchDirective } from './directives/Match.directive';
 import { FormatPhonePipe } from './pipes/formatPhone.pipe';
 import { HttpServiceService } from './services/http-service.service';
 import { HttpClientModule } from '@angular/common/http';
-import { SearchBoxComponent } from './components/search-box/search-box.component';
 import { NgxsModule } from '@ngxs/store';
 import { ShoppingCartState } from './store/states/ShoppingCart.state';
-import { DetailProductComponent } from './components/detail-product/detail-product.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
+import { LostComponentComponent } from './components/lost-component/lost-component.component';
 
 
 
 
 @NgModule({
-  declarations: [ AppComponent, HeaderComponent, FooterComponent, SearchBoxComponent, DetailProductComponent, HomeComponent],
+  declarations: [ AppComponent, HeaderComponent, FooterComponent, HomeComponent, LostComponentComponent],
   imports:   [
       BrowserModule, 
       CommonModule, 

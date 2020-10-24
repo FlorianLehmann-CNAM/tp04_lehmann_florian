@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from './components/home/home.component';
+import { LostComponentComponent } from './components/lost-component/lost-component.component';
 
 const routes: Routes = [
     {
@@ -19,7 +20,15 @@ const routes: Routes = [
         path: 'shopping-cart',
         loadChildren: () => import("./modules/shopping-cart/shopping-cart.module").then(m => m.ShoppingCartModule)
     },
-    
+    {
+        path: '',
+        redirectTo: '/home',
+        pathMatch: "full"
+    },
+    {
+        path: '**',
+        component: LostComponentComponent
+    }
   
 ];
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Observable, of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import { ClearShoppingCart, DelProduct } from 'src/app/store/actions/ShoppingCart.action';
+import { ClearShoppingCart, DelProduct, ModifyQuantity } from 'src/app/store/actions/ShoppingCart.action';
 import { Product } from 'src/app/models/Product';
 import { Article } from 'src/app/models/ShoppingCart';
 import { ShoppingCartState } from 'src/app/store/states/ShoppingCart.state';
@@ -36,7 +36,11 @@ export class ShoppingCartComponent implements OnInit {
         this.store.dispatch(new ClearShoppingCart());
     }
 
-    deleteProduct(product : Article, deleteAll: boolean) : void{
-        this.store.dispatch(new DelProduct(product, deleteAll));
+    deleteProduct(product : Article) : void{
+        this.store.dispatch(new DelProduct(product));
+    }
+
+    onQuantityChanged(product: Article, newQuantity : number){
+        this.store.dispatch(new ModifyQuantity(product, newQuantity));
     }
 }

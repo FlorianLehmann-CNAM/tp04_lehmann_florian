@@ -10,11 +10,17 @@ export class AddProduct{
 export class DelProduct{
     static readonly type = "[ShoppingCart] Del";
 
-    constructor(public payload: Article, public deleteAll: boolean){}
+    constructor(public payload: Article){}
 }
 
 export class ClearShoppingCart{
     static readonly type = "[ShoppingCart] Clear";
 
     constructor(){}
+}
+
+export class ModifyQuantity{
+    static readonly type = "[ShoppingCart] ModifyQuantity";
+
+    constructor(public payload: Article, public newQuantity : number){}
 }

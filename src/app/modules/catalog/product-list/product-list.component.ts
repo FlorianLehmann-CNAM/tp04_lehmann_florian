@@ -3,10 +3,10 @@ import { Observable } from "rxjs/internal/Observable";
 import { Product } from "../../../models/Product";
 import { HttpServiceService } from "../../../services/http-service.service";
 import { of } from "rxjs";
-import { Store } from '@ngxs/store';
-import { AddProduct } from 'src/app/store/actions/ShoppingCart.action';
-import { Article } from 'src/app/models/ShoppingCart';
-import { Router } from '@angular/router';
+import { Store } from "@ngxs/store";
+import { AddProduct } from "../../../store/actions/ShoppingCart.action";
+import { Article } from "../../../models/ShoppingCart";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-product-list",
@@ -18,7 +18,11 @@ export class ProductListComponent implements OnInit {
 
   displayProducts: Observable<Product[]>;
 
-  constructor(private httpService: HttpServiceService, private store : Store, private router: Router) {}
+  constructor(
+    private httpService: HttpServiceService,
+    private store: Store,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.productsObservable = this.httpService.getProductData();
@@ -26,16 +30,15 @@ export class ProductListComponent implements OnInit {
   }
 
   onFilteredData(event: Observable<Product[]>): void {
-    this.displayProducts = event
+    this.displayProducts = event;
   }
-  
 
-  addProductToShopppingCart(product: Product) : void{
-    let article : Article = Article.fromProduct(product);
+  addProductToShopppingCart(product: Product): void {
+    let article: Article = Article.fromProduct(product);
     this.store.dispatch(new AddProduct(article));
   }
 
-  onCardClicked(product: Product) : void{
-    this.router.navigate(['catalogue/' + product.id])
+  onCardClicked(product: Product): void {
+    this.router.navigate(["catalogue/" + product.id]);
   }
 }
